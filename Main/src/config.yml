@@ -1,0 +1,8 @@
+redstone_limit: 5
+restrict: true
+restricted:
+  - REDSTONE_BLOCK
+  - REDSTONE_WIRE
+worlds:
+  - world
+  - world_nether
