@@ -3,10 +3,14 @@ package com.geppi.other.trails;
 
 import java.util.Random;
 
+import org.bukkit.Material;
 import org.bukkit.Particle;
+import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.util.Vector;
 
 
 public class Movement implements Listener {
@@ -14,7 +18,8 @@ public class Movement implements Listener {
 
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
-        if (!ParticleData.hasFakeID(event.getPlayer().getUniqueId()))
+
+            if (!ParticleData.hasFakeID(event.getPlayer().getUniqueId()))
             return;
 
         Random r = new Random();

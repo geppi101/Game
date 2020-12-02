@@ -17,6 +17,8 @@ public class CustomPet extends EntityZombieHusk {
         this.setBaby(true);
 
         this.setInvulnerable(true);
+        this.setSilent(true);
+
 
         //target
         this.setGoalTarget((EntityLiving)((CraftPlayer)player).getHandle(),

@@ -4,8 +4,6 @@ import com.geppi.command.*;
 import com.geppi.event.*;
 import com.geppi.other.*;
 import com.geppi.other.redstone.RedstoneLimit;
-import com.geppi.other.redstone.commands.CommandManager;
-import com.geppi.other.redstone.listeners.BlockPlace;
 import com.geppi.other.scoreboard.ScoreboardMana;
 
 import com.geppi.other.tab.AnimatedTab;
@@ -14,14 +12,11 @@ import com.geppi.other.trails.GUI;
 import com.geppi.other.trails.Movement;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
@@ -101,6 +96,12 @@ public class Main extends JavaPlugin {
     }
 
     public void events() {
+        Bukkit.getPluginManager().registerEvents(new PlaceBlock(), (Plugin)this);
+        Bukkit.getPluginManager().registerEvents(new CommandEasterEgg(), (Plugin)this);
+        Bukkit.getPluginManager().registerEvents(new CommandSell(), (Plugin)this);
+
+        Bukkit.getPluginManager().registerEvents(new MoveEvent(), (Plugin)this);
+
         Bukkit.getPluginManager().registerEvents(new KillStreak(), (Plugin)this);
         Bukkit.getPluginManager().registerEvents(new CommandKillStreak(), (Plugin)this);
         Bukkit.getPluginManager().registerEvents(new CommandPrivateMessage(), (Plugin)this);
@@ -124,14 +125,12 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PickupItem(), (Plugin)this); // CLEAN ^
         Bukkit.getPluginManager().registerEvents(new CommandWorld(), (Plugin)this);
         Bukkit.getPluginManager().registerEvents(new BlockBreak(), (Plugin)this);
-        Bukkit.getPluginManager().registerEvents(new PlaceBlock(), (Plugin)this);
         Bukkit.getPluginManager().registerEvents(new CommandRefer(), (Plugin)this);
         Bukkit.getPluginManager().registerEvents(new EntityDeath(), (Plugin)this);
         Bukkit.getPluginManager().registerEvents(new CommandClearChat(), (Plugin)this);
         Bukkit.getPluginManager().registerEvents(new CommandDiscoArmor(), (Plugin)this);
         Bukkit.getPluginManager().registerEvents(new CommandPet(), (Plugin)this);
         Bukkit.getPluginManager().registerEvents(new CommandDispose(), (Plugin)this);
-        Bukkit.getPluginManager().registerEvents(new BlockPlace(), (Plugin)this);
 
 
         Bukkit.getPluginManager().registerEvents((Listener)new Leave(), (Plugin)this);

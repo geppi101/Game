@@ -2,6 +2,8 @@ package com.geppi.event;
 
 import com.geppi.other.ColorHandler;
 import com.geppi.other.PlayerHandler;
+import com.geppi.other.redstone.RedstoneLimit;
+import com.geppi.other.redstone.Utils;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -17,11 +19,60 @@ public class PlaceBlock implements Listener {
 
     PlayerHandler playerHandler = new PlayerHandler();
     ColorHandler colorHandler = new ColorHandler();
+    RedstoneLimit redstoneLimit = new RedstoneLimit();
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler
     public void onPlaceBlock(BlockPlaceEvent event) {
 
+        if(event.isCancelled()) {
+            event.setCancelled(true);
+            event.getPlayer().getWorld().getBlockAt(event.getBlock().getLocation()).setType(Material.AIR);
+            return;
+        }
 
+
+        String blockName = event.getBlock().getType().toString();
+        boolean isRedstone = redstoneLimit.getRestrictedBlocks().contains(blockName);
+
+        if (!isRedstone || !redstoneLimit.restrict()) {
+            event.setCancelled(false);
+            return;
+        }
+
+        final int minX = 0;
+        final int minZ = 0;
+        final int maxX = 15;
+        final int maxY = 255;
+        final int maxZ = 15;
+        int count = 0;
+
+        for (int x = minX; x <= maxX; ++x) {
+            for (int y = 0; y <= maxY; ++y) {
+                for (int z = minZ; z <= maxZ; ++z) {
+                    blockName = event.getBlock().getChunk().getBlock(x, y, z).getType().toString();
+                    isRedstone = redstoneLimit.getRestrictedBlocks().contains(blockName);
+
+                    if (isRedstone) {
+                        count++;
+
+                    }
+                }
+            }
+
+            if (count == (redstoneLimit.getRedstoneLimit() + 1) || (count > redstoneLimit.getRedstoneLimit() + 1)) {
+                if (redstoneLimit.getPlayerBypass(event.getPlayer().getUniqueId())) {
+                    event.getPlayer().sendMessage(Utils.colour("&3This chunk exceeds maximum redstone, but you bypassed!"));
+                    event.setCancelled(false);
+                    return;
+                }
+
+                event.getPlayer().sendMessage(Utils.colour("&cThis chunk exceeds maximum redstone!"));
+                event.setCancelled(true);
+                return;
+            }
+
+            event.setCancelled(false);
+        }
 
         playerHandler.setBlocksPlaced(event.getPlayer(), playerHandler.getBlocksPlaced(event.getPlayer()) + 1);
 

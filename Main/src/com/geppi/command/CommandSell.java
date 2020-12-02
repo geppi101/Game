@@ -1,19 +1,19 @@
 package com.geppi.command;
 
 import com.geppi.other.ColorHandler;
+import com.geppi.other.Inventories;
 import com.geppi.other.PlayerHandler;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
-public class CommandClear implements Listener {
+public class CommandSell implements Listener {
 
 
     PlayerHandler playerHandler = new PlayerHandler();
     ColorHandler colorHandler = new ColorHandler();
+    Inventories inventories = new Inventories();
 
 
     @EventHandler
@@ -24,17 +24,15 @@ public class CommandClear implements Listener {
 
         Player player = event.getPlayer();
 
-        if (args[0].equalsIgnoreCase("/clear")) {
+        if (args[0].equalsIgnoreCase("/sell")) {
             //0 = off || 1 = on
             event.setCancelled(true);
-            if(playerHandler.getRank(player) < 6) {
+            if(playerHandler.getDonateFeed(player) == 0) {
                 player.sendMessage(colorHandler.noPermission);
                 return;
             }
 
-            player.getInventory().clear();
-            player.sendMessage(colorHandler.main + "Inventory: " + colorHandler.message + "Inventory cleared!");
-            playerHandler.setDonateDiscoArmorStatus(player, 0);
+            inventories.sellInv(player);
 
         }
     }

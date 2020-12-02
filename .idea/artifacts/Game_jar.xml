@@ -3,7 +3,6 @@
     <output-path>$USER_HOME$/Documents/Server/plugins</output-path>
     <root id="archive" name="Game.jar">
       <element id="module-output" name="Game" />
-      <element id="extracted-dir" path="$USER_HOME$/Documents/Server/spigot.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

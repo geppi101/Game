@@ -1,13 +1,8 @@
 package com.geppi.other.redstone;
 
-import com.geppi.command.CommandDispose;
 import com.geppi.main.Main;
 import com.geppi.other.redstone.commands.CommandManager;
-import com.geppi.other.redstone.listeners.BlockPlace;
-import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 

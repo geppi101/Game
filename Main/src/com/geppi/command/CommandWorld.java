@@ -1,12 +1,18 @@
 package com.geppi.command;
 
+import com.geppi.main.Main;
 import com.geppi.other.ColorHandler;
 import com.geppi.other.PlayerHandler;
 import org.bukkit.*;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.List;
 
 import static org.bukkit.Bukkit.getServer;
 
@@ -47,6 +53,19 @@ public class CommandWorld implements Listener {
             worldCreator.type(WorldType.NORMAL);
 
             Bukkit.getServer().createWorld(worldCreator);
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+            World world = Bukkit.getServer().getWorld(args[1]);//get the world
+            List<Entity> entList = world.getEntities();//get all entities in the world
+            for(Entity current : entList){//loop through the list
+                if (!(current instanceof Player || current.isCustomNameVisible() || current instanceof ItemFrame)){//make sure we aren't deleting mobs/players
+                    current.remove();//remove it
+                }
+            }
+                }
+            }.runTaskLater(Main.getInstance(), 4500);
+            Bukkit.getServer().broadcastMessage("complete");
 
         }
 

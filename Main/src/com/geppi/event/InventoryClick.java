@@ -193,7 +193,81 @@ public class InventoryClick implements Listener {
 
         }
 
+        if (event.getView().getTitle().startsWith(colorHandler.main +"Easter Eggs")) {
+            event.setCancelled(true);
+            if ((event.getCurrentItem() == null) || (event.getCurrentItem().getType().equals(Material.AIR))) {
+                return;
+            }
 
+            if (event.getCurrentItem().getType().equals(Material.YELLOW_DYE)) {
+                player.closeInventory();
+                inventories.easterEggInvCharlie(player);
+                return;
+            }
+
+            if (event.getCurrentItem().getType().equals(Material.GREEN_DYE)) {
+                player.closeInventory();
+                inventories.easterEggInvBravo(player);
+                return;
+            }
+
+            if (event.getCurrentItem().getType().equals(Material.RED_DYE)) {
+                player.closeInventory();
+                inventories.easterEggInvAlpha(player);
+                return;
+            }
+
+            if (event.getCurrentItem().getType().equals(Material.PURPLE_DYE)) {
+                player.closeInventory();
+                inventories.easterEggInvElite(player);
+                return;
+            }
+
+            if (event.getCurrentItem().getType().equals(Material.GRAY_DYE)) {
+                player.closeInventory();
+                inventories.easterEggInvCenter(player);
+                return;
+            }
+
+        }
+
+        if (event.getView().getTitle().startsWith(colorHandler.main +"Shop")) {
+            event.setCancelled(true);
+            if ((event.getCurrentItem() == null) || (event.getCurrentItem().getType().equals(Material.AIR))) {
+                return;
+            }
+
+            if (event.getCurrentItem().getType().equals(Material.DIAMOND_HOE)) {
+                player.closeInventory();
+                inventories.sellFarmInv(player);
+                return;
+            }
+
+            if (event.getCurrentItem().getType().equals(Material.GREEN_DYE)) {
+                player.closeInventory();
+                inventories.easterEggInvBravo(player);
+                return;
+            }
+
+            if (event.getCurrentItem().getType().equals(Material.RED_DYE)) {
+                player.closeInventory();
+                inventories.easterEggInvAlpha(player);
+                return;
+            }
+
+            if (event.getCurrentItem().getType().equals(Material.PURPLE_DYE)) {
+                player.closeInventory();
+                inventories.easterEggInvElite(player);
+                return;
+            }
+
+            if (event.getCurrentItem().getType().equals(Material.GRAY_DYE)) {
+                player.closeInventory();
+                inventories.easterEggInvCenter(player);
+                return;
+            }
+
+        }
 
 
         if(event.getView().getTitle().contains("Rewards")) {

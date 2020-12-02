@@ -40,7 +40,122 @@ public class Inventories {
     public Inventory voteInventory;
     public Inventory rulesInventory;
 
+    //EASTER EGGS
+    public Inventory easterEggInventory;
+    public Inventory easterEggCharlieInventory;
+    public Inventory easterEggBravoInventory;
+    public Inventory easterEggAlphaInventory;
+    public Inventory easterEggEliteInventory;
+    public Inventory easterEggCenterInventory;
 
+    //SELL INVENTORY
+    public Inventory sellInventory;
+    public Inventory sellFarmInventory;
+    public Inventory sellMobInventory;
+    public Inventory sellMineInventory;
+
+
+
+
+
+
+    /*Inventory Slots
+    0   1  2  3  4  5  6  7  8
+    9  10  11 12 13 14 15 16 17
+    18 19  20 21 22 23 24 25 26
+    27 28  29 30 31 32 33 34 35
+    36 37  38 39 40 41 42 43 44
+    45 46  47 48 49 50 51 52 53
+    */
+
+    public void sellInv(Player player) {
+        sellInventory = Bukkit.createInventory(null, InventoryType.HOPPER, colorHandler.main +"Shop");
+        createItem(Material.DIAMOND_HOE, sellInventory, 0, "Farming Shop", "Sell your farming items to the local farmer!");
+        createItem(Material.BONE, sellInventory, 2, "Mob Shop", "Sell your mob loot to the local zombie killer!");
+        createItem(Material.IRON_ORE, sellInventory, 4, "Mine Shop", "Sell your mined items to the local miner!");
+        player.openInventory(sellInventory);
+    }
+
+    public void sellFarmInv(Player player) {
+        sellFarmInventory = Bukkit.createInventory(null, 27, colorHandler.main +"Farmer Shop");
+        createItem(Material.DIAMOND_HOE, sellFarmInventory, 4, "Farmer Shop", "Sell your farming items to the local farmer!");
+        createItem(Material.WHEAT, sellFarmInventory, 10, "Wheat", "Sell your wheat for $5 each!");
+        createItem(Material.SUGAR, sellFarmInventory, 20, "Sugar", "Sell your sugar for $5 each!");
+        createItem(Material.PUMPKIN, sellFarmInventory, 12, "Pumpkin", "Sell your pumpkins for $5 each!");
+        createItem(Material.CACTUS, sellFarmInventory, 14, "Cactus", "Sell your cactus for $5 each!");
+        createItem(Material.NETHER_WART, sellFarmInventory, 16, "Nether Wart", "Sell your nether wart for $4 each!");
+        createItem(Material.PORKCHOP, sellFarmInventory, 24, "Porkchop", "Sell your pork chops for $15 each!");
+        player.openInventory(sellFarmInventory);
+    }
+
+
+
+
+
+    public void easterEggInv(Player player) {
+        easterEggInventory = Bukkit.createInventory(null, InventoryType.HOPPER, colorHandler.main +"Easter Eggs (#/25)");
+        createItem(Material.YELLOW_DYE, easterEggInventory, 0, "Charlie Easter Eggs (0/5)", "View all Easter Eggs in Charlie");
+        createItem(Material.GREEN_DYE, easterEggInventory, 1, "Bravo Easter Eggs (0/5)", "View all Easter Eggs in Bravo");
+        createItem(Material.RED_DYE, easterEggInventory, 2, "Alpha Easter Eggs (0/5)", "View all Easter Eggs in Alpha");
+        createItem(Material.PURPLE_DYE, easterEggInventory, 3, "Elite Easter Eggs (0/5)", "View all Easter Eggs in Elite");
+        createItem(Material.GRAY_DYE, easterEggInventory, 4, "Center Easter Eggs (0/5)", "View all Easter Eggs in Center");
+        player.openInventory(easterEggInventory);
+    }
+
+    public void easterEggInvCharlie(Player player) {
+        easterEggCharlieInventory = Bukkit.createInventory(null, 18, colorHandler.main +"Charlie Easter Eggs (#/5)");
+        createItem(Material.YELLOW_DYE, easterEggCharlieInventory, 4, "Charlie Easter Eggs", null);
+        createItem(Material.PAPER, easterEggCharlieInventory, 9, "Easter Egg #1", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggCharlieInventory, 11, "Easter Egg #2", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggCharlieInventory, 13, "Easter Egg #3", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggCharlieInventory, 15, "Easter Egg #4", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggCharlieInventory, 17, "Easter Egg #5", "Hint - COMPLETE / INCOMPLETE");
+        player.openInventory(easterEggCharlieInventory);
+    }
+
+    public void easterEggInvBravo(Player player) {
+        easterEggBravoInventory = Bukkit.createInventory(null, 18, colorHandler.main +"Bravo Easter Eggs (#/5)");
+        createItem(Material.GREEN_DYE, easterEggBravoInventory, 4, "Bravo Easter Eggs", null);
+        createItem(Material.PAPER, easterEggBravoInventory, 9, "Easter Egg #1", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggBravoInventory, 11, "Easter Egg #2", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggBravoInventory, 13, "Easter Egg #3", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggBravoInventory, 15, "Easter Egg #4", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggBravoInventory, 17, "Easter Egg #5", "Hint - COMPLETE / INCOMPLETE");
+        player.openInventory(easterEggBravoInventory);
+    }
+
+    public void easterEggInvAlpha(Player player) {
+        easterEggAlphaInventory = Bukkit.createInventory(null, 18, colorHandler.main +"Alpha Easter Eggs (#/5)");
+        createItem(Material.RED_DYE, easterEggAlphaInventory, 4, "Alpha Easter Eggs", null);
+        createItem(Material.PAPER, easterEggAlphaInventory, 9, "Easter Egg #1", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggAlphaInventory, 11, "Easter Egg #2", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggAlphaInventory, 13, "Easter Egg #3", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggAlphaInventory, 15, "Easter Egg #4", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggAlphaInventory, 17, "Easter Egg #5", "Hint - COMPLETE / INCOMPLETE");
+        player.openInventory(easterEggAlphaInventory);
+    }
+
+    public void easterEggInvElite(Player player) {
+        easterEggEliteInventory = Bukkit.createInventory(null, 18, colorHandler.main +"Elite Easter Eggs (#/5)");
+        createItem(Material.PURPLE_DYE, easterEggEliteInventory, 4, "Elite Easter Eggs", null);
+        createItem(Material.PAPER, easterEggEliteInventory, 9, "Easter Egg #1", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggEliteInventory, 11, "Easter Egg #2", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggEliteInventory, 13, "Easter Egg #3", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggEliteInventory, 15, "Easter Egg #4", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggEliteInventory, 17, "Easter Egg #5", "Hint - COMPLETE / INCOMPLETE");
+        player.openInventory(easterEggEliteInventory);
+    }
+
+    public void easterEggInvCenter(Player player) {
+        easterEggCenterInventory = Bukkit.createInventory(null, 18, colorHandler.main + "Center Easter Eggs (#/5)");
+        createItem(Material.GRAY_DYE, easterEggCenterInventory, 4, "Center Easter Eggs", null);
+        createItem(Material.PAPER, easterEggCenterInventory, 9, "Easter Egg #1", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggCenterInventory, 11, "Easter Egg #2", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggCenterInventory, 13, "Easter Egg #3", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggCenterInventory, 15, "Easter Egg #4", "Hint - COMPLETE / INCOMPLETE");
+        createItem(Material.PAPER, easterEggCenterInventory, 17, "Easter Egg #5", "Hint - COMPLETE / INCOMPLETE");
+        player.openInventory(easterEggCenterInventory);
+    }
 
     public void statsInv(Player player) {
         statsInventory = Bukkit.createInventory(null, InventoryType.HOPPER, colorHandler.main +"Stats");
@@ -49,6 +164,9 @@ public class Inventories {
         createItem(Material.BOOK, statsInventory, 4, "Totals", null);
         player.openInventory(statsInventory);
     }
+
+
+
     public void killStreakInv(Player player) {
         int kills = playerHandler.getKills(player);
         double deaths = playerHandler.getDeaths(player);
@@ -217,14 +335,6 @@ public class Inventories {
 
     }
 
-    /*
-    ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1);
-            SkullMeta sm = (SkullMeta) skull.getItemMeta();
-            sm.setOwningPlayer(getOfflinePlayer(args[1]));
-            skull.setItemMeta(sm);
-
-            player.getInventory().addItem(skull);
-     */
 
     public void createItemHead(Inventory inv, int Slot, String name, String lore, String owner) {
         ItemStack item = new ItemStack(Material.PLAYER_HEAD);

@@ -142,7 +142,6 @@ public class CommandPet implements Listener {
         WorldServer world = ((CraftWorld) player.getWorld()).getHandle();
         world.addEntity(pet);
 
-
     }
 
 }

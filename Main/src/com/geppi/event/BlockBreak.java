@@ -20,6 +20,10 @@ public class BlockBreak implements Listener {
     public void onBlockLowerBreak(BlockBreakEvent e) {
         Player p = e.getPlayer();
         if(e.getBlock().getType().equals(Material.SNOW_BLOCK)) {
+            if(e.isCancelled()) {
+                e.setCancelled(true);
+                return;
+            }
             e.setDropItems(false);
             final Block block = e.getBlock();
             Bukkit.getServer().getWorld("world").dropItemNaturally(block.getLocation(), new ItemStack(Material.SNOW_BLOCK));
@@ -30,7 +34,10 @@ public class BlockBreak implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e) {
         Player player = e.getPlayer();
-
+        if(e.isCancelled()) {
+            e.setCancelled(true);
+            return;
+        }
 
         if(e.getBlock().getType().equals(Material.WHEAT) && !(e.getBlock().getData() == (byte) 7)) {
             e.setCancelled(true);

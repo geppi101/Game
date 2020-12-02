@@ -2,6 +2,8 @@ package com.geppi.other.tab;
 
 import org.bukkit.Bukkit;
 
+import javax.swing.*;
+
 public class AnimatedTab {
 
     public TabManager tab;
@@ -15,6 +17,7 @@ public class AnimatedTab {
         tab.addHeader("&4&lBehind Bars\n-------------------------\n&7Enjoy!\n");
 
         tab.addFooter("\n&4&lPlayers Online: &7" + Bukkit.getOnlinePlayers().size());
+
 
         tab.showTab();
     }

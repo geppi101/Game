@@ -52,8 +52,6 @@ public class FallingBlock implements Listener {
                    || event.getBlock().getType() == Material.BIRCH_LOG
                    || event.getBlock().getType() == Material.SUGAR_CANE
                    || event.getBlock().getType() == Material.HOPPER
-
-
                    || event.getBlock().getType()== Material.BIRCH_LEAVES
                    || event.getSourceBlock().getType() == Material.BIRCH_SAPLING
                    || event.getSourceBlock().getType() == Material.BIRCH_LEAVES
@@ -61,7 +59,6 @@ public class FallingBlock implements Listener {
                    || event.getSourceBlock().getType() == Material.BIRCH_LOG
                    || event.getSourceBlock().getType() == Material.SUGAR_CANE
                    || event.getSourceBlock().getType() == Material.HOPPER
-
                    || event.getBlock().getType() == Material.STICKY_PISTON
                    || event.getBlock().getType() == Material.DIRT
                    || event.getBlock().getType() == Material.COARSE_DIRT

@@ -76,13 +76,17 @@ public class ScoreboardMana implements Listener {
                 }
 
                 switch(count) {
-                    case 0: ;
-                        (player.getScoreboard().getObjective(DisplaySlot.SIDEBAR)).setDisplayName(
-                                ChatColor.translateAlternateColorCodes('&', "&c&l<< &4&lBehindBars &c&l>>").toString());
+                    case 0:
+                        try {
+                            (player.getScoreboard().getObjective(DisplaySlot.SIDEBAR)).setDisplayName(
+                                    ChatColor.translateAlternateColorCodes('&', "&c&l<< &4&lBehindBars &c&l>>").toString());
+                        } catch (NullPointerException ignored) {}
                         break;
                     case 1:
+                        try{
                         (player.getScoreboard().getObjective(DisplaySlot.SIDEBAR)).setDisplayName(
                                 ChatColor.translateAlternateColorCodes('&', "&4&lIP: &c&l144.217.87.179").toString());
+                } catch (NullPointerException ignored) {}
                         break;
                 }
 

@@ -67,7 +67,9 @@ public class Join implements Listener {
 
         if(!player.hasPlayedBefore()) {
             event.setJoinMessage(ChatColor.YELLOW + ChatColor.BOLD.toString() + "Welcome " + player.getName());
-            Location cspawn = new Location(Bukkit.getWorld("world"), -0.5,138,198.5);
+           //Location cspawn = new Location(Bukkit.getWorld("world"), -0.5,138,198.5);
+            Location cspawn = new Location(Bukkit.getWorld("tempsurvival"), -0.5,138,198.5);
+
             player.teleport(cspawn);
 
             return;

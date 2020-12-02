@@ -82,7 +82,7 @@ public class CommandFix implements Listener {
 
         if(args[0].contains("/") && message.contains(":")) {
             event.setCancelled(true);
-            if(!(args[0].equalsIgnoreCase("/msg") || args[0].equalsIgnoreCase("/spartan") || args[0].equalsIgnoreCase("/tell") || args[0].equalsIgnoreCase("/message") || args[0].equalsIgnoreCase("/r")))
+            if(!(args[0].equalsIgnoreCase("/msg") || args[0].equalsIgnoreCase("/spartan") || args[0].equalsIgnoreCase("/tell") || args[0].equalsIgnoreCase("/message") || args[0].equalsIgnoreCase("/r") || args[0].equalsIgnoreCase("/co")))
             player.sendMessage("You can not type commands with ':' inside!");
             return;
         }
